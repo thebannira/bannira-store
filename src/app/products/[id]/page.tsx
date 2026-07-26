@@ -116,7 +116,6 @@ export default function ProductDetails() {
   const productId = (product.id || product._id || product.slug) as string;
   const isOutOfStock = !product.inStock || product.quantity === 0;
   
-  // 🔥 FIXED: Evaluate presence specifically matching the selected variant configuration stack
   const cartItem = isLoggedIn
     ? cart.find((item) => item.id === productId && item.size === selectedSize)
     : null;
@@ -146,7 +145,6 @@ export default function ProductDetails() {
   };
 
   const confirmAddToCart = (size: string) => {
-    // 🔥 FIXED: Condition dictates message output format based on matrix duplication
     const isPresent = cart.some((item) => item.id === productId && item.size === size);
     
     addToCart(product, size);
@@ -543,7 +541,7 @@ export default function ProductDetails() {
 
       <AnimatePresence>
         {showSizeChart && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -555,9 +553,11 @@ export default function ProductDetails() {
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="relative bg-white w-full max-w-xl rounded-[2rem] overflow-hidden shadow-2xl"
+              className="relative bg-white w-full max-w-[300px] md:max-w-[500px] rounded-[2rem] overflow-hidden shadow-2xl"
             >
-              <div className="p-8 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
+
+               <Image src={"/bannira_size_chart.jpeg"} alt="banniraSizeChart" width={500} height={500}/>
+              {/* <div >
                 <div>
                   <h3 className="font-serif text-2xl text-stone-800 italic">
                     Size Guide
@@ -572,10 +572,10 @@ export default function ProductDetails() {
                 >
                   <X size={18} />
                 </button>
-              </div>
-              <div className="p-8">
+              </div> */}
+              <div>
                 <div className="overflow-hidden border border-stone-100 rounded-2xl">
-                  <table className="w-full text-left border-collapse">
+                  {/* <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-stone-50 text-[10px] font-black uppercase tracking-widest text-stone-500 border-b border-stone-100">
                         <th className="px-6 py-4">Size</th>
@@ -603,7 +603,9 @@ export default function ProductDetails() {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </table> */}
+
+                 
                 </div>
               </div>
             </motion.div>
