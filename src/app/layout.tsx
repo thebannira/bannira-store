@@ -29,7 +29,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Bannira Store",
+  title: "Bannira | Culture in Color, Style in Spirit",
   description: "Culture in color, Style in spirit",
 };
 

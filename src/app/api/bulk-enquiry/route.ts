@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     });
 
     try {
-      await sendBulkEnquiryEmail(process.env.ADMIN_RECEIVER_EMAIL || "prerit.dev@gmail.com", {
+      await sendBulkEnquiryEmail(process.env.ADMIN_RECEIVER_EMAIL || "thebannira@gmail.com", {
         enquiryId: newLead._id,
         name,
         companyName,

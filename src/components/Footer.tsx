@@ -33,17 +33,17 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="/about" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 About Us
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 Contact
               </a>
             </li>
             <li>
-              <a href="/faq" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 FAQ
               </a>
             </li>
@@ -56,22 +56,22 @@ const Footer: React.FC = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="/shipping" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 Shipping Policy
               </a>
             </li>
             <li>
-              <a href="/returns" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 Returns & Exchanges
               </a>
             </li>
             <li>
-              <a href="/privacy" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="/terms" className="hover:text-[#D4AF37] transition">
+              <a href="" className="hover:text-[#D4AF37] transition">
                 Terms of Service
               </a>
             </li>
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/thebannira?igsh=MW5hZzBwbXNuZnl3eQ=="
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -103,17 +103,7 @@ const Footer: React.FC = () => {
                 <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zm8.02 3.77a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0zm-4.02 1.96a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 1.5a3 3 0 100 6 3 3 0 000-6z" />
               </svg>
             </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Twitter"
-              className="hover:text-[#D4AF37] transition"
-            >
-              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.724 9.903 9.903 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482 13.978 13.978 0 01-10.148-5.144 4.822 4.822 0 001.523 6.574 4.9 4.9 0 01-2.229-.616v.06a4.93 4.93 0 003.946 4.827 4.996 4.996 0 01-2.224.084 4.927 4.927 0 004.604 3.417A9.868 9.868 0 010 19.54a13.941 13.941 0 007.548 2.209c9.056 0 14.004-7.496 14.004-13.985 0-.213-.005-.425-.014-.636A9.936 9.936 0 0024 4.59z" />
-              </svg>
-            </a>
+           
           </div>
         </div>
       </div>

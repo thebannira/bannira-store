@@ -36,7 +36,7 @@ export const sendOrderEmail = async (email: string, orderDetails: any) => {
   `).join("");
 
   const mailOptions = {
-    from: '"Bannira Store" <prerit.dev@gmail.com>',
+    from: '"Bannira Store" <thebannira@gmail.com',
     to: email,
     subject: `Order Successfully Placed: Order #${orderId.toString().slice(-6).toUpperCase()}`,
     html: `
@@ -98,7 +98,7 @@ export const sendOrderEmail = async (email: string, orderDetails: any) => {
           </div>
 
           <div style="margin-top: 50px; text-align: center;">
-            <a href="https://bannira-store.vercel.app/profile/orders" style="background-color: #1C1C1C; color: #D4AF37; padding: 18px 35px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 11px; letter-spacing: 2px; display: inline-block; text-transform: uppercase; border: 1px solid #D4AF37;">Track Your Order</a>
+            <a href="https://www.bannira.com/" style="background-color: #1C1C1C; color: #D4AF37; padding: 18px 35px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 11px; letter-spacing: 2px; display: inline-block; text-transform: uppercase; border: 1px solid #D4AF37;">Track Your Order</a>
           </div>
         </div>
 
