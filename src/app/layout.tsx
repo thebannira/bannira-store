@@ -13,6 +13,7 @@ import LayoutWrapper from "@/components/LayoutWrapper";
 // import { SessionProvider } from "next-auth/react";
 import Providers from "@/components/Providers";
 import BulkCTA from "@/components/BulkCTA";
+import ComingSoonOverlay from "@/components/ComingSoonOverlay";
 
 const libre = Libre_Baskerville({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${libre.variable} ${poppins.variable} antialiased`}>
+        <ComingSoonOverlay/>
         <Providers>
           <ScrollToTop />
           <LayoutWrapper>
