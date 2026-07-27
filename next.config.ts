@@ -10,6 +10,22 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    if (process.env.NEXT_PUBLIC_APP_ENV === 'dev') {
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'X-Robots-Tag',
+              value: 'noindex, nofollow, noarchive',
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  },
 };
 
 export default nextConfig;
