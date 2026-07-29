@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
+              <a href="/about" className="hover:text-[#D4AF37] transition">
                 About Us
               </a>
             </li>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
+              <a href="/terms-of-service" className="hover:text-[#D4AF37] transition">
                 Terms of Service
               </a>
             </li>
