@@ -17,6 +17,7 @@ import {
   Sparkles,
   HelpCircle,
   UserPlus,
+  User2,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -198,6 +199,7 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
                     <DrawerLink href="/products" icon={<Store size={18} />} label="Shop All" onClick={() => setMenuOpen(false)} />
                     <DrawerLink href="/profile/orders" icon={<History size={18} />} label="Track Orders" onClick={() => setMenuOpen(false)} />
                     <DrawerLink href="/wishlist" icon={<Heart size={18} />} label="My Wishlist" onClick={() => setMenuOpen(false)} />
+                    <DrawerLink href="/profile" icon={<User2 size={18} />} label="My Profile" onClick={() => setMenuOpen(false)} />
                   </div>
                 </section>
                 {/* <section className="space-y-4">

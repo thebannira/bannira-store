@@ -173,7 +173,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       
       if (existingItem) {
         if (existingItem.quantity + 1 > availableStock) {
-          showToast(`Limit reached: Only ${availableStock} units available in stock.`);
+          showToast(`Sorry! Only ${availableStock} units available in stock.`);
           return prev;
         }
         return prev.map((item) =>
@@ -247,7 +247,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         : 0;
 
       if (newQuantity > sizeStock) {
-        showToast(`Limit reached: Only ${sizeStock} units available for Size ${size}.`);
+        showToast(`Sorry! Only ${sizeStock} units available for Size ${size}.`);
         return;
       }
 
@@ -319,7 +319,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
               <div className="bg-[#D4AF37] text-black rounded-full p-1">
                 <ShieldCheck size={16} />
               </div>
-              <p className="text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
+              <p className="text-[11px] font-black uppercase tracking-[0.2em]">
                 {notification.message}
               </p>
             </div>
