@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${libre.variable} ${poppins.variable} antialiased`}>
-        <ComingSoonOverlay/>
+        {/* <ComingSoonOverlay/> */}
         <Providers>
           <ScrollToTop />
           <LayoutWrapper>
