@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
     <HeroSection/>
-    <Categories/>
+    {/* <Categories/> */}
     <ProductsSection/>
     <PageBreakerSlider/>
     <ShowcaseSection/>

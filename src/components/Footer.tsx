@@ -2,6 +2,8 @@
 
 import React from "react";
 import SignInStrip from "./SignInStrip";
+import Link from "next/link";
+import { WhatsappLogo } from "phosphor-react";
 
 const Footer: React.FC = () => {
   return (
@@ -80,7 +82,7 @@ const Footer: React.FC = () => {
 
         <div>
           <h3 className="text-white font-semibold text-lg mb-6">Follow Us</h3>
-          <div className="flex space-x-6 text-gray-400">
+          <div className="flex space-x-3 text-gray-400 items-center">
             <a
               href="https://facebook.com"
               target="_blank"
@@ -103,6 +105,7 @@ const Footer: React.FC = () => {
                 <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zm8.02 3.77a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0zm-4.02 1.96a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 1.5a3 3 0 100 6 3 3 0 000-6z" />
               </svg>
             </a>
+            <Link href="https://wa.me/7976354818" className=""><WhatsappLogo size={25} /></Link>
            
           </div>
         </div>

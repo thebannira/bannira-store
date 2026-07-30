@@ -72,11 +72,11 @@ export default function SignInStrip() {
                 </Link>
 
                 <div className="flex items-center gap-4 text-stone-400">
-                  <div className="h-[px] w-8 bg-stone-500/30" />
+                  {/* <div className="h-[px] w-8 bg-stone-500/30" /> */}
                   <span className="text-[9px] font-black uppercase tracking-widest">
                     Start your journey with Bannira
                   </span>
-                  <div className="h-[1px] w-8 bg-stone-500/30" />
+                  {/* <div className="h-[1px] w-8 bg-stone-500/30" /> */}
                 </div>
               </div>
             </div>

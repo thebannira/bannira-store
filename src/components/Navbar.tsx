@@ -45,7 +45,7 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoutConfirmOpen, setLogoutConfirmOpen] = useState(false);
 
-  const topSpacing = isBarVisible ? "top-2 md:top-5" : "top-0";
+  const topSpacing = isBarVisible ? "top-6 md:top-5" : "top-0";
 
   const handleProtectedNavigation = (e: any, path: string) => {
     e.preventDefault();
@@ -89,7 +89,7 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
   return (
     <>
       <header className={`fixed ${topSpacing} left-0 w-full z-50 transition-all duration-500 bg-[#7B2D0A]`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-2 flex items-center justify-between">
           <Link href={"/"} className={`transition-all duration-500 ${scrolled ? "scale-75" : "scale-75"}`}>
             <Image src={"/bannira_web_logo2.png"} alt="logo" width={180} height={80} priority className="object-cover w-auto h-auto -ml-2 md:ml-0" />
           </Link>
@@ -200,17 +200,19 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
                     <DrawerLink href="/wishlist" icon={<Heart size={18} />} label="My Wishlist" onClick={() => setMenuOpen(false)} />
                   </div>
                 </section>
-                <section className="space-y-4">
+                {/* <section className="space-y-4">
                   <p className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-300 px-2">Categories</p>
                   <div className="bg-white rounded-3xl border border-stone-100 overflow-hidden">
                     <DrawerLink href="/products?category=kurtis" icon={<Shirt size={18} />} label="Premium Kurtis" onClick={() => setMenuOpen(false)} />
                     <DrawerLink href="/products?category=dresses" icon={<Sparkles size={18} />} label="Festive Wear" onClick={() => setMenuOpen(false)} />
                   </div>
-                </section>
+                </section> */}
                 <div className="p-6 bg-stone-50 rounded-3xl border border-stone-100 flex items-center justify-between group">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-stone-900 shadow-sm border border-stone-100"><HelpCircle size={18} /></div>
-                    <div><p className="text-[10px] font-black uppercase tracking-widest text-stone-900">Support</p><p className="text-[9px] text-stone-400 font-bold uppercase italic">Contact Bannira</p></div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-stone-900">Customer Support</p><p className="text-[9px] text-stone-400 font-bold uppercase italic">+91 79763 54818</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -218,8 +220,8 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
                 {isLoggedIn && <button onClick={confirmLogout} className="w-full flex items-center justify-center gap-3 py-4 bg-red-50 text-red-500 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-red-100 transition-all"><LogOut size={16} /> Sign Out</button>}
                 <div className="flex justify-between items-center">
                   <div className="flex gap-5">
-                    <Link href="https://instagram.com" className="text-stone-400 hover:text-black transition-colors"><InstagramLogo size={18} /></Link>
-                    <Link href="https://wa.me/yournumber" className="text-stone-400 hover:text-black transition-colors"><WhatsappLogo size={18} /></Link>
+                    <Link href="https://www.instagram.com/thebannira?igsh=MW5hZzBwbXNuZnl3eQ==" className="text-stone-400 hover:text-black transition-colors"><InstagramLogo size={18} /></Link>
+                    <Link href="https://wa.me/7976354818" className="text-stone-400 hover:text-black transition-colors"><WhatsappLogo size={18} /></Link>
                   </div>
                   <p className="text-[9px] font-black text-stone-300 tracking-[0.2em] uppercase">Bannira © 2026</p>
                 </div>
