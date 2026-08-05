@@ -19,9 +19,7 @@ const Footer: React.FC = () => {
             loading="lazy"
           />
           <p className="text-gray-400 max-w-xs leading-relaxed">
-            Bannira celebrates the elegance of tradition with timeless kurtis
-            and ethnic wear, crafted for modern women who value style, comfort,
-            and quality.
+            Bannira is a homegrown fashion brand founded by a Marwari husband-and-wife team who turned their passion for Indian craftsmanship into a purpose.
           </p>
         </div>
 
@@ -40,15 +38,15 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
+              <a href="/contact" className="hover:text-[#D4AF37] transition">
                 Contact
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="" className="hover:text-[#D4AF37] transition">
                 FAQ
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -58,17 +56,17 @@ const Footer: React.FC = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
+              <a href="/shipping-policy" className="hover:text-[#D4AF37] transition">
                 Shipping Policy
               </a>
             </li>
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
-                Returns & Exchanges
+              <a href="/exchange-policy" className="hover:text-[#D4AF37] transition">
+                Exchange Policy
               </a>
             </li>
             <li>
-              <a href="" className="hover:text-[#D4AF37] transition">
+              <a href="/privacy-policy" className="hover:text-[#D4AF37] transition">
                 Privacy Policy
               </a>
             </li>
@@ -82,9 +80,9 @@ const Footer: React.FC = () => {
 
         <div>
           <h3 className="text-white font-semibold text-lg mb-6">Follow Us</h3>
-          <div className="flex space-x-3 text-gray-400 items-center">
+          <div className="flex space-x-6 text-gray-400 items-center">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/profile.php?id=61583170716636"
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"

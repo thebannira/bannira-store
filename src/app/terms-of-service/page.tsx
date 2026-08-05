@@ -8,9 +8,9 @@ import { Mail, Sparkles } from "lucide-react";
 const TermsOfServicePage: React.FC = () => {
   return (
     <main className="min-h-screen bg-[#0D0D0C] text-[#F3E1B6] selection:bg-[#D4AF37] selection:text-black py-20 md:py-30 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-5xl mx-auto space-y-12">
+      <div className="max-w-5xl mx-auto space-y-12 mt-15">
         <div className="text-center space-y-4 border-b border-[#D4AF37]/20 pb-10">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -20,7 +20,7 @@ const TermsOfServicePage: React.FC = () => {
             <span className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">
               Legal & Guidelines
             </span>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

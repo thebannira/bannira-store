@@ -25,7 +25,7 @@ import { useAuth } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/context/WishlistContext";
 import { useCart } from "@/context/CartContext";
-import { InstagramLogo, WhatsappLogo } from "phosphor-react";
+import { FacebookLogo, InstagramLogo, WhatsappLogo } from "phosphor-react";
 import Search from "./Search";
 
 interface NavbarProps {
@@ -222,6 +222,7 @@ export default function Navbar({ isBarVisible = true }: NavbarProps) {
                 {isLoggedIn && <button onClick={confirmLogout} className="w-full flex items-center justify-center gap-3 py-4 bg-red-50 text-red-500 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-red-100 transition-all"><LogOut size={16} /> Sign Out</button>}
                 <div className="flex justify-between items-center">
                   <div className="flex gap-5">
+                    <Link href="https://www.facebook.com/profile.php?id=61583170716636" className="text-stone-400 hover:text-black transition-colors"><FacebookLogo size={18} /></Link>
                     <Link href="https://www.instagram.com/thebannira?igsh=MW5hZzBwbXNuZnl3eQ==" className="text-stone-400 hover:text-black transition-colors"><InstagramLogo size={18} /></Link>
                     <Link href="https://wa.me/7976354818" className="text-stone-400 hover:text-black transition-colors"><WhatsappLogo size={18} /></Link>
                   </div>
