@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '/**'
       },
+      {
+        protocol: 'https',
+        hostname: 'www.biba.in',
+        pathname: '/**'
+      },
     ],
   },
   async headers() {

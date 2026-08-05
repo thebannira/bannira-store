@@ -9,7 +9,6 @@ export async function GET(request: NextRequest) {
     let settings = await UISetting.findOne({});
     
     if (!settings) {
-      // Agar database me pehle se setting nahi hai to default document create karo
       settings = await UISetting.create({
         topStripText: [
           "FREE SHIPPING ON ALL ORDERS ABOVE ₹4999",
@@ -46,7 +45,6 @@ export async function POST(request: NextRequest) {
       gstPercentage 
     } = body;
 
-    // Settings ko update karo ya naya document insert karo (Upsert)
     const settings = await UISetting.findOneAndUpdate(
       {},
       {
