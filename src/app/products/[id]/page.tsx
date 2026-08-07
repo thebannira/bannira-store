@@ -539,7 +539,7 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showSizeChart && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center">
             <motion.div
@@ -557,61 +557,55 @@ export default function ProductDetails() {
             >
 
                <Image src={"/bannira_size_chart.jpeg"} alt="banniraSizeChart" width={500} height={500}/>
-              {/* <div >
-                <div>
-                  <h3 className="font-serif text-2xl text-stone-800 italic">
-                    Size Guide
-                  </h3>
-                  <p className="text-[10px] uppercase tracking-widest text-stone-400 mt-1">
-                    Measurements in Inches
-                  </p>
-                </div>
-                <button
-                  onClick={() => setShowSizeChart(false)}
-                  className="w-10 h-10 rounded-full bg-white border border-stone-100 flex items-center justify-center text-stone-400 hover:text-black transition-all shadow-sm"
-                >
-                  <X size={18} />
-                </button>
-              </div> */}
+              
               <div>
                 <div className="overflow-hidden border border-stone-100 rounded-2xl">
-                  {/* <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-stone-50 text-[10px] font-black uppercase tracking-widest text-stone-500 border-b border-stone-100">
-                        <th className="px-6 py-4">Size</th>
-                        <th className="px-6 py-4">Chest</th>
-                        <th className="px-6 py-4">Waist</th>
-                        <th className="px-6 py-4">Length</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-xs font-bold text-stone-600">
-                      {[
-                        { s: "S", c: "36", w: "32", l: "44" },
-                        { s: "M", c: "38", w: "34", l: "44" },
-                        { s: "L", c: "40", w: "36", l: "45" },
-                        { s: "XL", c: "42", w: "38", l: "45" },
-                        { s: "XXL", c: "44", w: "40", l: "46" },
-                      ].map((row, i) => (
-                        <tr
-                          key={i}
-                          className="border-b border-stone-50 last:border-none hover:bg-stone-50/30 transition-colors"
-                        >
-                          <td className="px-6 py-4 text-stone-900">{row.s}</td>
-                          <td className="px-6 py-4">{row.c}"</td>
-                          <td className="px-6 py-4">{row.w}"</td>
-                          <td className="px-6 py-4">{row.l}"</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table> */}
-
                  
                 </div>
               </div>
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
+
+      <AnimatePresence>
+  {showSizeChart && (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setShowSizeChart(false)}
+        className="absolute inset-0 bg-stone-900/60 backdrop-blur-md"
+      />
+
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.95, opacity: 0, y: 20 }}
+        className="relative bg-white w-full max-w-[420px] md:max-w-[480px] max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl z-10 flex flex-col"
+      >
+        <button
+          onClick={() => setShowSizeChart(false)}
+          className="absolute top-3 right-3 z-20 w-8 h-8 bg-stone-900/20 hover:bg-stone-900/40 text-stone-800 rounded-full flex items-center justify-center transition-colors"
+        >
+          ✕
+        </button>
+
+        <div className="overflow-y-auto w-full h-full p-2">
+          <Image
+            src={"/bannira_size_chart.jpeg"}
+            alt="banniraSizeChart"
+            width={500}
+            height={700}
+            className="w-full h-auto object-contain rounded-2xl"
+            priority
+          />
+        </div>
+      </motion.div>
+    </div>
+  )}
+</AnimatePresence>
 
       {mounted &&
         createPortal(

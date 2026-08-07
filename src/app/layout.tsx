@@ -30,7 +30,13 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Bannira | Culture in Color, Style in Spirit",
-  description: "Culture in color, Style in spirit",
+  description: "Bannira is a homegrown fashion brand founded by a Marwari husband-and-wife team who turned their passion for Indian craftsmanship into a purpose.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "96x96" },
+    ],
+  },
 };
 
 export default function RootLayout({
