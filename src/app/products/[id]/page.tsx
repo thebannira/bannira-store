@@ -223,7 +223,7 @@ export default function ProductDetails() {
                     src={getOptimizedUrl(img)}
                     alt=""
                     fill
-                    className="object-cover"
+                    className="object-fill"
                   />
                 </button>
               ))}
@@ -244,7 +244,7 @@ export default function ProductDetails() {
                       src={getOptimizedUrl(img)}
                       alt={product.name}
                       fill
-                      className="object-cover"
+                      className="object-fit"
                     />
                   </div>
                 ))}
@@ -263,7 +263,7 @@ export default function ProductDetails() {
                       src={getOptimizedUrl(images[selectedImage])}
                       alt={product.name}
                       fill
-                      className="object-cover"
+                      className="object-fit"
                       priority
                     />
                   </motion.div>

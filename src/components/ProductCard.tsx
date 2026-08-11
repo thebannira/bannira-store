@@ -133,7 +133,7 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
               alt={name}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-              className="object-cover transition-all duration-700 group-hover:scale-105"
+              className="object-fill transition-all duration-700 group-hover:scale-105"
             />
           </Link>
 

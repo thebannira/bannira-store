@@ -13,15 +13,15 @@ const categories = [
   },
   {
     id: 2,
-    name: "Printed Kurti",
+    name: "Cotton Kurti",
     image: "/assets/Products/product-5.jpg",
-    href: "/products?category=Printed+Kurti",
+    href: "/products?category=Cotton+Kurti",
   },
   {
     id: 3,
     name: "Maxi Dresses",
     image: "/assets/Products/product-6.jpg",
-    href: "/products?category=Maxi+Dresses",
+    href: "/products?category=Maxi+Dress",
   },
   {
     id: 4,
