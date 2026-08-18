@@ -13,7 +13,7 @@ function ProductsList() {
   const { allProducts, isLoading, error } = useProducts();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search")?.toLowerCase() || "";
-  const searchCategory = searchParams.get("category");
+const searchCategory = searchParams.get("category")?.toLowerCase().trim().replace(/s$/, "") || "";
   
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [selectedSize, setSelectedSize] = useState<string[]>([]);
@@ -24,13 +24,11 @@ function ProductsList() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  // --- URL CLEANING LOGIC START ---
   const clearUrlParams = () => {
     if (searchParams.get("search") || searchParams.get("category")) {
       router.push("/products", { scroll: false });
     }
   };
-  // --- URL CLEANING LOGIC END ---
 
   useEffect(() => {
     if (isFilterOpen || isSortOpen) {
@@ -55,7 +53,7 @@ function ProductsList() {
   ];
 
   const togglePriceFilter = (range: { label: string; min: number; max: number }) => {
-    clearUrlParams(); // Clean URL on filter change
+    clearUrlParams();
     setSelectedPriceRanges((prev) =>
       prev.some((p) => p.label === range.label)
         ? prev.filter((p) => p.label !== range.label)
@@ -68,7 +66,7 @@ function ProductsList() {
     selected: T[],
     setSelected: React.Dispatch<React.SetStateAction<T[]>>,
   ) => {
-    clearUrlParams(); // Clean URL on filter change
+    clearUrlParams();
     setSelected((prev) =>
       prev.includes(value as any)
         ? prev.filter((v) => v !== value)
@@ -105,10 +103,20 @@ function ProductsList() {
       (product.color && product.color.toLowerCase().includes(word))
     );
 
-    const categoryToMatch = searchCategory ? [searchCategory] : selectedCategory;
-    const categoryMatch = 
-      categoryToMatch.length === 0 || 
-      categoryToMatch.some(cat => cat.toLowerCase() === product.category.toLowerCase());
+    // const categoryToMatch = searchCategory ? [searchCategory] : selectedCategory;
+    // const categoryMatch = 
+    //   categoryToMatch.length === 0 || 
+    //   categoryToMatch.some(cat => cat.toLowerCase() === product.category.toLowerCase());
+
+    let categoryMatch = true;
+
+    if (searchCategory) {
+    categoryMatch = product.category?.toLowerCase().includes(searchCategory);
+  } else if (selectedCategory.length > 0) {
+    categoryMatch = selectedCategory.some(
+    (cat) => cat.toLowerCase() === product.category?.toLowerCase()
+    );
+}
 
     const sizeMatch = selectedSize.length === 0 || product.sizes?.some((s: any) => selectedSize.includes(s));
     const colorMatch = selectedColor.length === 0 || selectedColor.includes(product.color);

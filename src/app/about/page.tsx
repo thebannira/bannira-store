@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -14,18 +12,6 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#B8860B]/10 via-transparent to-transparent z-1 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl mx-auto space-y-4 mt-15">
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 border border-[#7b2d0a]/30 px-4 py-1.5 rounded-full bg-[#7b2d0a]/5 backdrop-blur-md"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#7b2d0a]" />
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#7b2d0a] font-semibold">
-              Our Journey
-            </span>
-          </motion.div> */}
-
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +46,7 @@ export default function AboutPage() {
                 src="/bannira_logo.png"
                 alt="Bannira Brand Logo"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
+                className="object-contain hover:scale-105 transition-transform duration-700"
               />
             </div>
           </motion.div>
@@ -93,6 +79,38 @@ export default function AboutPage() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-[#FAF6EE] border-y border-[#7b2d0a]/10 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#7b2d0a]">
+              Meet the Founders
+            </h2>
+            <div className="w-12 h-0.5 bg-[#D4AF37] mx-auto mt-2" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <Image
+                  src="/assets/founders/founders.jpeg"
+                  alt="Founders of Bannira"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-28 h-28 border-2 border-[#D4AF37]/40 rounded-2xl -z-1 hidden sm:block" />
+            </motion.div>
+          </div>
         </div>
       </section>
 

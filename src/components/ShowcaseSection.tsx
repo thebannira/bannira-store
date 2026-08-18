@@ -3,31 +3,32 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const categories = [
   {
     id: 1,
-    name: "Short Kurti",
-    image: "/assets/Products/product-4.jpg",
-    href: "/products?category=Short+Kurti",
+    name: "Kurtis",
+    image: "/assets/categories/kurti.jpeg",
+    href: "/products?category=kurti",
   },
   {
     id: 2,
-    name: "Cotton Kurti",
-    image: "/assets/Products/product-5.jpg",
-    href: "/products?category=Cotton+Kurti",
+    name: "Suits",
+    image: "/assets/categories/suit.jpeg",
+    href: "/products?category=suit",
   },
   {
     id: 3,
     name: "Maxi Dresses",
-    image: "/assets/Products/product-6.jpg",
-    href: "/products?category=Maxi+Dress",
+    image: "/assets/categories/maxidress.jpeg",
+    href: "/products?category=maxi",
   },
   {
     id: 4,
-    name: "Office Wear",
-    image: "/assets/Products/product-8.jpg",
-    href: "/products?category=Office+Wear",
+    name: "Co-ord Sets",
+    image: "/assets/categories/cordset.jpeg",
+    href: "/products?category=co-ord",
   },
 ];
 
@@ -68,14 +69,16 @@ const ShowcaseSection: React.FC = () => {
                 className="group relative block aspect-[3/4] overflow-hidden rounded-sm bg-[#2A1A12] border border-[#D4AF37]/20"
               >
                 {/* Background Image */}
-                <img
+                <Image
+                  fill
                   src={image}
                   alt={name}
-                  className="w-full h-full object-cover transition-transform duration-700 scale-105 group-hover:scale-110 group-hover:opacity-80"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="w-full h-full object-fit transition-transform duration-700 scale-105 group-hover:scale-110 group-hover:opacity-80"
                   loading="lazy"
                 />
 
-                <div className="absolute inset-0 bg-linear-to-t from-[#2A1A12] via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2A1A12] via-transparent to-transparent opacity-80" />
 
                 <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8">
                   <h3 className="text-white text-xl md:text-2xl font-serif mb-4 transform transition-transform duration-500 group-hover:-translate-y-2">
