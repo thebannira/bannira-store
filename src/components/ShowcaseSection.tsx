@@ -74,7 +74,7 @@ const ShowcaseSection: React.FC = () => {
                   src={image}
                   alt={name}
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="w-full h-full object-fit transition-transform duration-700 scale-105 group-hover:scale-110 group-hover:opacity-80"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 scale-100 group-hover:scale-105 group-hover:opacity-80"
                   loading="lazy"
                 />
 

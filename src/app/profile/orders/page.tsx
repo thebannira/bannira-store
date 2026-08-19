@@ -109,8 +109,8 @@ export default function OrdersPage() {
             const displayId = order._id.toString().slice(-8).toUpperCase();
             
             return (
-              <motion.div 
-                key={order._id} 
+              <motion.div
+                key={order._id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-white rounded-[2rem] p-6 border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
@@ -119,25 +119,59 @@ export default function OrdersPage() {
                   <div className="flex justify-between items-center border-b border-stone-50 pb-4">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-[#7B2D0A] rounded-full" />
-                        <p className="text-[10px] font-bold text-stone-900 uppercase tracking-widest">{order.orderStatus}</p>
+                        <span
+                          className={`w-2 h-2 rounded-full ${
+                            order.status?.toLowerCase() === "success"
+                              ? "bg-emerald-600"
+                              : order.status?.toLowerCase() === "processing" ||
+                                  order.status?.toLowerCase() === "in-process"
+                                ? "bg-orange-500"
+                                : "bg-[#7B2D0A]"
+                          }`}
+                        />
+                        <p
+                          className={`text-[10px] font-bold uppercase tracking-widest ${
+                            order.status?.toLowerCase() === "success"
+                              ? "text-emerald-600"
+                              : order.status?.toLowerCase() === "processing" ||
+                                  order.status?.toLowerCase() === "in-process"
+                                ? "text-orange-500"
+                                : "text-[#7B2D0A]"
+                          }`}
+                        >
+                          {order.status}
+                        </p>
                       </div>
                       <p className="text-[11px] font-bold text-stone-400 flex items-center gap-1">
-                        ID: <span className="text-stone-900 font-black">#{displayId}</span>
+                        ID:{" "}
+                        <span className="text-stone-900 font-black">
+                          #{displayId}
+                        </span>
                       </p>
                     </div>
                     <p className="text-[10px] text-stone-400 font-bold uppercase">
-                      {new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                      {new Date(order.createdAt).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                      })}
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     {grouped.map((item: any, idx: number) => (
                       <div key={idx} className="flex items-center gap-4">
-                        <img src={item.image} className="w-14 h-18 object-cover rounded-xl bg-stone-50" alt={item.name} />
+                        <img
+                          src={item.image}
+                          className="w-14 h-18 object-cover rounded-xl bg-stone-50"
+                          alt={item.name}
+                        />
                         <div className="flex-1">
-                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-tight">{item.quantity} × {item.name}</h4>
-                          <p className="text-[9px] text-stone-400 font-bold uppercase mt-1">Size: {item.size}</p>
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-tight">
+                            {item.quantity} × {item.name}
+                          </h4>
+                          <p className="text-[9px] text-stone-400 font-bold uppercase mt-1">
+                            Size: {item.size}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -145,15 +179,19 @@ export default function OrdersPage() {
 
                   <div className="flex items-center justify-between pt-4 border-t border-stone-50">
                     <div>
-                      <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Total Amount</p>
-                      <p className="text-sm font-bold text-stone-900">₹{order.totalAmount.toLocaleString()}</p>
+                      <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest">
+                        Total Amount
+                      </p>
+                      <p className="text-sm font-bold text-stone-900">
+                        ₹{order.totalAmount.toLocaleString()}
+                      </p>
                     </div>
-                    <Link 
+                    {/* <Link 
                       href={`/profile/orders/${order._id}`}
                       className="bg-stone-900 text-[#D4AF37] px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-2 hover:bg-black transition-all"
                     >
                       Track Order <ArrowRight size={14} />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </motion.div>
