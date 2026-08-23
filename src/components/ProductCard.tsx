@@ -47,9 +47,7 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
   const currentCartItems = isLoggedIn ? cart.filter((item) => item.id === productId) : [];
   const isAlreadyInCart = currentCartItems.length > 0;
   
-  // Extract explicit sizes already added to format inside the primary button label
   const addedSizesString = currentCartItems.map(item => item.size).join(", ");
-
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
   const isWishlistPage = pathname === "/wishlist";
 
@@ -119,26 +117,37 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
   return (
     <>
       <div
-        className="group relative overflow-hidden transition-all duration-500 bg-white border border-gray-100 rounded-2xl hover:shadow-xl"
+        className="group relative transition-all duration-500 bg-white border border-gray-100 rounded-2xl hover:shadow-xl mt-7 flex flex-col justify-between"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => {
           setHovered(false);
           setCurrentIndex(0);
         }}
       >
-        <div className="relative aspect-[3/4] overflow-hidden bg-[#F9F9F9]">
+        {badge && (
+          <div className="absolute -top-7 left-[0px] z-10 pointer-events-none">
+            <span className="inline-flex items-center bg-[#2A1A12] text-[#F3E1B6]  text-[8px] font-black uppercase tracking-[0.2em] px-4 py-1.5 pb-5 rounded-t-xl shadow-xs">
+              {badge}
+            </span>
+          </div>
+        )}
+
+        <div className="relative aspect-[3/4] z-20 overflow-hidden bg-[#F9F9F9] rounded-t-2xl">
           <Link href={`/products/${productSlug}`} className="block h-full relative">
             <Image
               src={getOptimizedUrl(images && images.length > 0 ? images[currentIndex] : "")}
               alt={name}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-              className="object-fill transition-all duration-700 group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           </Link>
 
-          {badge && <span className="absolute top-3 left-3 z-10 bg-black text-white text-[9px] tracking-widest px-2 py-1 rounded-full uppercase">{badge}</span>}
-          {discount > 0 && <span className="absolute top-3 right-3 z-10 bg-[#D4AF37] text-black text-[9px] font-bold px-2 py-1 rounded-full shadow-sm">{discount}% OFF</span>}
+          {discount > 0 && (
+            <span className="absolute top-3 right-3 z-10 bg-[#D4AF37] text-black text-[9px] font-extrabold px-2.5 py-1 rounded-full shadow-sm tracking-wider">
+              {discount}% OFF
+            </span>
+          )}
 
           {isLowStock && (
             <div className="absolute bottom-3 left-3 z-10 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full border border-[#7B2D0A]/20 shadow-sm">
@@ -155,42 +164,42 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
           </button>
         </div>
 
-        <div className="p-3 md:p-5 flex flex-col min-h-[180px]">
-          <p className="text-[9px] tracking-[0.2em] uppercase text-stone-400 font-bold mb-1 font-poppins">{category}</p>
-          <Link href={`/products/${productSlug}`}>
-            <h3 className="text-sm font-serif text-[#1A1A1A] mb-2 group-hover:text-[#7B2D0A] transition-colors line-clamp-2">{name}</h3>
-          </Link>
+        <div className="p-3 md:p-5 flex flex-col flex-1 justify-between">
+          <div>
+            <p className="text-[9px] tracking-[0.2em] uppercase text-stone-400 font-bold mb-1 font-poppins">{category}</p>
+            <Link href={`/products/${productSlug}`}>
+              <h3 className="text-sm font-serif text-[#1A1A1A] mb-2 group-hover:text-[#7B2D0A] transition-colors line-clamp-2">{name}</h3>
+            </Link>
 
-          <div className="flex items-center gap-2 mb-4 font-poppins">
-            <span className="text-lg font-bold text-[#1A1A1A]">₹{price.toLocaleString("en-IN")}</span>
-            {originalPrice && <span className="text-xs text-stone-300 line-through">₹{originalPrice.toLocaleString("en-IN")}</span>}
+            <div className="flex items-center gap-2 mb-4 font-poppins">
+              <span className="text-lg font-bold text-[#1A1A1A]">₹{price.toLocaleString("en-IN")}</span>
+              {originalPrice && <span className="text-xs text-stone-300 line-through">₹{originalPrice.toLocaleString("en-IN")}</span>}
+            </div>
           </div>
 
-          <div className="w-full mt-auto">
+          <div className="w-full pt-2">
             {isOutOfStock ? (
               <button
                 disabled
-                className="w-full py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-stone-100 text-stone-400 border border-stone-200 cursor-not-allowed"
+                className="w-full py-3.5 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-stone-100 text-stone-400 border border-stone-200 cursor-not-allowed"
               >
                 Sold Out
               </button>
             ) : isAlreadyInCart ? (
               <div className="flex gap-2 w-full">
-                {/* Primary split redirecting to cart detailing sizing metadata */}
                 <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     router.push("/cart");
                   }}
-                  className="flex-1 py-2 md:py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-stone-200 bg-stone-50 text-stone-600 flex items-center justify-center gap-1.5 hover:bg-stone-100 transition-all cursor-pointer"
+                  className="flex-1 py-2 md:py-3.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-stone-200 bg-stone-50 text-stone-600 flex items-center justify-center gap-1.5 hover:bg-stone-100 transition-all cursor-pointer"
                 >
                   <span className="flex items-center gap-1 font-semibold italic text-stone-500">
                     <Check size={12} className="text-green-600 hidden md:block" /> Added <br className="block md:hidden"/> ({addedSizesString})
                   </span>
                 </button>
                 
-                {/* Secondary incremental action button triggering modal setup directly */}
                 <button
                   onClick={handleAddAnotherSizeClick}
                   title="Add another size"
@@ -202,7 +211,7 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
             ) : (
               <button
                 onClick={handleCartClick}
-                className="w-full py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-[#7B2D0A] text-white hover:bg-[#000000] active:scale-95 shadow-lg shadow-black/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-[#7B2D0A] text-white hover:bg-[#000000] active:scale-95 shadow-lg shadow-black/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isLoggedIn ? <><ShoppingBag size={14} /> Add to Bag</> : "Shop Now"}
               </button>
@@ -236,13 +245,13 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={confirmRemove}
-                    className="w-full py-4 bg-[#7B2D0A] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all"
+                    className="w-full py-4 bg-[#7B2D0A] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all cursor-pointer"
                   >
                     Yes, Remove
                   </button>
                   <button
                     onClick={() => setShowRemoveConfirm(false)}
-                    className="w-full py-4 bg-stone-100 text-stone-600 rounded-2xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all"
+                    className="w-full py-4 bg-stone-100 text-stone-600 rounded-2xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all cursor-pointer"
                   >
                     No, Keep it
                   </button>
@@ -286,7 +295,6 @@ const ProductCard = ({ product, onAddToCartSuccess }: ProductCardProps) => {
         document.body
       )}
 
-      {/* 🔥 FIXED: Filter sizes dynamically to pass only sizes with valid stock count to modal */}
       <SizeSelectionModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
