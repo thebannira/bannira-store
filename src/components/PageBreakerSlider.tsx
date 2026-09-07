@@ -25,8 +25,8 @@ const slides: Slide[] = [
     id: 1,
     image: "/assets/Breaker_slider/breaker_image1.webp",
     title: "Bannira",
-    subtitle: "Discover the Elegance of Tradition",
-    offer: "Flat 60% OFF - Festive Collection",
+    subtitle: "Celebrate in Style",
+    offer: "Timeless silhouettes. Contemporary elegance",
     link: "/products",
   },
   {
@@ -47,7 +47,7 @@ const PageBreakerSlider: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+    <section className="relative w-full h-[60vh] md:h-[120vh] overflow-hidden">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -70,7 +70,7 @@ const PageBreakerSlider: React.FC = () => {
                 <img
                   src={image}
                   alt={`${title} banner`}
-                  className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                  className="w-full h-full object-cover md:object-cover transition-transform duration-[2000ms] group-hover:scale-110"
                 />
               </div>
 
@@ -118,12 +118,12 @@ const PageBreakerSlider: React.FC = () => {
                     e.stopPropagation(); 
                     handleNavigate(link);
                   }}
-                  className="group relative border border-[#D4AF37] px-10 py-4 uppercase tracking-[0.2em] text-sm font-bold overflow-hidden"
+                  className="group bg-[#D4AF37] relative border border-[#D4AF37] px-10 py-4 uppercase tracking-[0.2em] text-sm font-bold overflow-hidden"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                     Shop the Collection
                   </span>
-                  <div className="absolute inset-0 bg-[#D4AF37] translate-y-full transition-transform duration-300 group-hover:translate-y-0"></div>
+                  <div className="absolute inset-0 bg-[#ffffff] translate-y-full transition-transform duration-300 group-hover:translate-y-0"></div>
                 </motion.button>
               </div>
             </div>
