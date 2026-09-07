@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         hostname: 'www.biba.in',
         pathname: '/**'
       },
+      {
+        protocol: "https",
+        hostname: "**",
+      },
     ],
   },
   async headers() {

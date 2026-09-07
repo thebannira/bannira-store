@@ -252,6 +252,9 @@ import HeroSwiperClient, { Slide } from "./HeroSwiperClient";
 import { connectDB } from "@/lib/mongodb";
 import UISetting from "@/models/UISetting";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 // Fallback static banners
 const FALLBACK_SLIDES: Slide[] = [
   {
