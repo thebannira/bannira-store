@@ -217,7 +217,7 @@ export default function HeroSwiperClient({ slides }: HeroSwiperClientProps) {
   const router = useRouter();
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black hero-swiper-wrapper">
+    <section className="relative h-screen w-full overflow-hidden bg-black hero-swiper-wrapper mt-0 sm:mt-0 md:mt-12">
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         speed={1000}
