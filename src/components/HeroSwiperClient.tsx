@@ -220,34 +220,40 @@ export default function HeroSwiperClient({ slides: initialSlides }: HeroSwiperCl
   const [currentSlides, setCurrentSlides] = useState<Slide[]>(initialSlides);
 
   useEffect(() => {
-    async function syncLatestBanners() {
-      try {
-        const res = await fetch(`/api/ui-settings?t=${Date.now()}`, {
-          cache: "no-store",
-        });
-        const result = await res.json();
+  async function syncLatestBanners() {
+    try {
+      const res = await fetch(`/api/ui-settings?t=${Date.now()}`, {
+        cache: "no-store",
+      });
 
-        if (result.success && result.data?.heroBanners?.length > 0) {
-          const freshBanners: Slide[] = result.data.heroBanners.map((b: any) => ({
-            desktopImage: b.imageUrl,
-            mobileImage: b.mobileImageUrl || b.imageUrl,
-            subtitle: b.subtitle || "",
-            title: b.title || "",
-            description: b.subtitle || "",
-            cta: "Shop Now",
-            link: b.ctaLink || "/products",
-            showContent: true,
-            overlay: true,
-          }));
-          setCurrentSlides(freshBanners);
-        }
-      } catch (err) {
-        console.error("Client banner sync error:", err);
+      if (!res.ok) return;
+
+      const result = await res.json();
+
+      const bannersList = result.heroBanners || result.data?.heroBanners;
+
+      if (result.success && bannersList && bannersList.length > 0) {
+        const freshBanners: Slide[] = bannersList.map((b: any) => ({
+          desktopImage: b.imageUrl,
+          mobileImage: b.mobileImageUrl || b.imageUrl,
+          subtitle: b.subtitle || "",
+          title: b.title || "",
+          description: b.subtitle || "",
+          cta: "Shop Now",
+          link: b.ctaLink || "/products",
+          showContent: Boolean(b.title || b.subtitle),
+          overlay: Boolean(b.title || b.subtitle),
+        }));
+
+        setCurrentSlides(freshBanners);
       }
+    } catch (err) {
+      console.error("Client banner sync error:", err);
     }
+  }
 
-    syncLatestBanners();
-  }, []);
+  syncLatestBanners();
+}, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black hero-swiper-wrapper mt-0 sm:mt-0 md:mt-12">
