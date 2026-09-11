@@ -187,6 +187,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // @ts-ignore
 import "swiper/css";
@@ -213,16 +214,49 @@ interface HeroSwiperClientProps {
   slides: Slide[];
 }
 
-export default function HeroSwiperClient({ slides }: HeroSwiperClientProps) {
+export default function HeroSwiperClient({ slides: initialSlides }: HeroSwiperClientProps) {
   const router = useRouter();
+
+  const [currentSlides, setCurrentSlides] = useState<Slide[]>(initialSlides);
+
+  useEffect(() => {
+    async function syncLatestBanners() {
+      try {
+        const res = await fetch(`/api/ui-settings?t=${Date.now()}`, {
+          cache: "no-store",
+        });
+        const result = await res.json();
+
+        if (result.success && result.data?.heroBanners?.length > 0) {
+          const freshBanners: Slide[] = result.data.heroBanners.map((b: any) => ({
+            desktopImage: b.imageUrl,
+            mobileImage: b.mobileImageUrl || b.imageUrl,
+            subtitle: b.subtitle || "",
+            title: b.title || "",
+            description: b.subtitle || "",
+            cta: "Shop Now",
+            link: b.ctaLink || "/products",
+            showContent: true,
+            overlay: true,
+          }));
+          setCurrentSlides(freshBanners);
+        }
+      } catch (err) {
+        console.error("Client banner sync error:", err);
+      }
+    }
+
+    syncLatestBanners();
+  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black hero-swiper-wrapper mt-0 sm:mt-0 md:mt-12">
       <Swiper
+        key={currentSlides.length}
         modules={[Autoplay, Navigation, Pagination]}
         speed={1000}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
-        loop={slides.length > 1}
+        loop={currentSlides.length > 1}
         allowTouchMove={true}
         slidesPerView={1}
         spaceBetween={0}
@@ -236,7 +270,7 @@ export default function HeroSwiperClient({ slides }: HeroSwiperClientProps) {
         }}
         className="h-full w-full"
       >
-        {slides.map((slide, index) => {
+        {currentSlides.map((slide, index) => {
           const desktopSrc = slide.desktopImage || slide.imageUrl || "";
           const mobileSrc = slide.mobileImage || desktopSrc;
 
